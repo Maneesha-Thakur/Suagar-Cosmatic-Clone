@@ -1,6 +1,7 @@
+
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Box,Button,FormControl,FormLabel,Input,Heading,Text,VStack, Container,useToast,} from '@chakra-ui/react';
+import { Box, Button, FormControl, FormLabel, Input, Heading, Text, VStack, Container, useToast } from '@chakra-ui/react';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -34,12 +35,9 @@ const Login = () => {
     navigate('/');
   };
 
-  
   return (
-    <Container centerContent  >
-
-  
-      <Box p={8} mt={8}   width="100%"  borderWidth={1} borderRadius="lg"boxShadow="lg">
+    <Container centerContent>
+      <Box p={8} mt={8} width="100%" borderWidth={1} borderRadius="lg" boxShadow="lg">
         <VStack spacing={4}>
           <Heading as="h1" size="lg">
             Login Page

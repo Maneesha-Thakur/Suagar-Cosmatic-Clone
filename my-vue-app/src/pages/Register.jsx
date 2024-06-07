@@ -1,6 +1,6 @@
 
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {
   Box,
   Button,
@@ -15,29 +15,29 @@ import {
 } from '@chakra-ui/react';
 
 const Register = () => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const [showRegisterForm, setShowRegisterForm] = useState(false); // State to toggle register form
   const toast = useToast();
 
   const handleRegister = (e) => {
     e.preventDefault();
 
-    if (!username || !password) {
-      setError('Please enter both username and password.');
+    if (!email || !password) {
+      setError('Please enter both email and password.');
       return;
     }
 
     // Check if user already exists
-    const existingUser = localStorage.getItem(username);
+    const existingUser = localStorage.getItem(email);
     if (existingUser) {
       setError('User already exists.');
       return;
     }
 
     // Save user to localStorage
-    localStorage.setItem(username, JSON.stringify({ username, password }));
+    const userData = { email, password };
+    localStorage.setItem(email, JSON.stringify(userData));
     setError('');
     toast({
       title: 'Registration successful!',
@@ -46,6 +46,10 @@ const Register = () => {
       duration: 3000,
       isClosable: true,
     });
+
+    // Clear the form fields
+    setEmail('');
+    setPassword('');
   };
 
   return (
@@ -63,39 +67,34 @@ const Register = () => {
           <Heading as="h1" size="lg">
             Register Page
           </Heading>
-          {!showRegisterForm && (
-            <Button onClick={() => setShowRegisterForm(true)}>Register</Button>
-          )}
-          {showRegisterForm && (
-            <form onSubmit={handleRegister} style={{ width: '100%' }}>
-              <FormControl id="username" isRequired>
-                <FormLabel>Username</FormLabel>
-                <Input
-                  type="text"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  placeholder="Enter your username"
-                />
-              </FormControl>
-              <FormControl id="password" isRequired mt={4}>
-                <FormLabel>Password</FormLabel>
-                <Input
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Enter your password"
-                />
-              </FormControl>
-              {error && (
-                <Text color="red.500" mt={2}>
-                  {error}
-                </Text>
-              )}
-              <Button type="submit" colorScheme="teal" width="full" mt={4}>
-                Register
-              </Button>
-            </form>
-          )}
+          <form onSubmit={handleRegister} style={{ width: '100%' }}>
+            <FormControl id="email" isRequired>
+              <FormLabel>Email</FormLabel>
+              <Input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your email"
+              />
+            </FormControl>
+            <FormControl id="password" isRequired mt={4}>
+              <FormLabel>Password</FormLabel>
+              <Input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Enter your password"
+              />
+            </FormControl>
+            {error && (
+              <Text color="red.500" mt={2}>
+                {error}
+              </Text>
+            )}
+            <Button type="submit" colorScheme="teal" width="full" mt={4}>
+              Register
+            </Button>
+          </form>
         </VStack>
       </Box>
     </Container>
@@ -103,3 +102,4 @@ const Register = () => {
 };
 
 export default Register;
+
