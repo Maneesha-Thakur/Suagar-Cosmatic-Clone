@@ -1,13 +1,16 @@
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import { Box, Flex, Heading, Image, Text, Button } from "@chakra-ui/react";
+import { Box, Flex, Heading, Image, Text, Button, Alert,
+  AlertIcon, } from "@chakra-ui/react";
+import { useCart } from '../context/CartContext';
 
 const ProductDescription = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [error, setError] = useState('');
+  const { addToCart } = useCart();
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -30,14 +33,18 @@ const ProductDescription = () => {
   }, [id]);
 
   const handleAddToCart = () => {
-    // Logic to add product to cart can be added here
     if (product) {
-      console.log(`Added ${product.name} to cart`);
+      addToCart(product);
+      // Alert(`Added ${product.name} to cart`);
+      <Alert status='success' color='black' >
+    <AlertIcon />
+    Added {product.name} to cart
+  </Alert>
     }
   };
-
+ 
   return (
-    <Box p={5} bg="white" w='100%' >
+    <Box p={5} bg="white" w='100%'>
       {error ? (
         <Text color="red.500">{error}</Text>
       ) : product ? (
@@ -46,8 +53,7 @@ const ProductDescription = () => {
             <Image src={product.image_link} alt={product.name} borderRadius="md" />
           </Box>
           <Box flex="1" ml={{ md: 5 }} mb={{ base: 5, md: 0 }}>
-            
-            <Heading mb={4}>{product.name}</Heading>
+           <Heading mb={4}>{product.name}</Heading>
             <Text mb={4} color="black">{product.description}</Text>
             <Text fontWeight="bold">Price: {product.price_sign}{product.price}</Text>
             <Button mt={4} colorScheme="blue" onClick={handleAddToCart}>

@@ -7,6 +7,7 @@ import Card1 from '../pages/card/Card1'
 import Card2 from '../pages/card/Card2'
 import Card3 from '../pages/card/Card3'
 import NotifyMe from '../pages/card/NotifyMe'
+import Cart from '../pages/card/Cart'
 
 import { Route,Routes } from 'react-router-dom'
 
@@ -19,7 +20,7 @@ const Allroute = () => {
 
    
      
-   <Box>
+   <Box maxw='full' >
         
   <Routes>
     <Route path='/' element={<Home/>} ></Route>
@@ -32,6 +33,7 @@ const Allroute = () => {
     <Route path='/card2' element={<Card2/>} ></Route>
     <Route path='/card3' element={<Card3/>} ></Route>
     <Route path='/notify-me/:id' element={<NotifyMe/>} ></Route>
+    <Route path='/cart' element={<Cart/>} ></Route>
  
 
   </Routes>

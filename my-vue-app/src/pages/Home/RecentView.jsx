@@ -27,7 +27,7 @@ const ReacentView = () => {
 
   return (
     <Container color='black'>
-      <Heading size='1xl' color='grey'>RECENTLY VIEWED</Heading><br /><br />
+      <Heading fontSize='30px' color='grey' marginLeft="200px" >RECENTLY VIEWED</Heading><br /><br />
       <Box display="flex" flexDirection="row" justifyContent="space-between">
         {currentImages.map((src, idx) => (
           <Box key={idx} width="48%">

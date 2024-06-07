@@ -13,11 +13,11 @@ const MidBottom = () => {
    <Box color='black' >
          
 
-      <Heading color='black' size='1xl'>SUGAR BEAUTY BLOG</Heading> <br /><br />
-      <Box style={{ display: 'flex', flexDirection: 'row' }}>
+      <Heading color='black' fontSize='30px' marginLeft='500px' >SUGAR BEAUTY BLOG</Heading> <br /><br />
+      <Box  display= 'flex' flexDirection= 'row' >
         {images.map((src, index) => (
           <Link to={`/card${index + 1}`} key={index}>
-            <Card style={{ marginRight: '10px' }}>
+            <Card  marginRight= '10px' >
               <Image src={src} />
             </Card>
           </Link>

@@ -13,7 +13,7 @@ const FooterMid = () => {
 
       <Box bg='black' h='auto' >
 
-<Heading color="white" p={6}>Suagr</Heading>
+<Heading size='2xl' color="white" p={6} marginLeft='600px' >Sugar</Heading>
 
 <Box style={{ textAlign: 'center', marginTop: '50px' }}>
      <Box style={{ display: 'flex', justifyContent: 'center', gap: '20px' }}>
@@ -55,7 +55,7 @@ const FooterMid = () => {
 
 <Box>
 
-<Heading color='white' >Get In Touch</Heading>
+<Heading color='white' marginLeft="600px" >Get In Touch</Heading><br /><br />
 <Box>
  <HStack spacing={6} marginLeft='200px' gap='110px' fontSize='20px' >
 
@@ -64,7 +64,7 @@ const FooterMid = () => {
 <Text color="white" size='xl' >Career</Text>
 <Text color="white" size='xl' >Press and Media</Text>
 <Text color="white" size='xl' >Influencer Collab</Text>
- </HStack>
+ </HStack><br /><br />
 </Box>
 
 <Box>
@@ -79,7 +79,7 @@ const FooterMid = () => {
          pr@sugarcosmetics.com
        </Link>
        <Link to='https://docs.google.com/forms/d/10QqWLG-_x61g8xXcCOd856iap1feiMgFmWcXhVxDWk0/viewform?edit_requested=true' >Join us</Link>
- </HStack>
+ </HStack><br />
 </Box>
 <br />
 <hr style={{marginLeft:"90px",width:"90%",color:"grey"}}   /> <br />

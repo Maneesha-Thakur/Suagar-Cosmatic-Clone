@@ -1,10 +1,9 @@
-
-
-
-import React, { useState, useEffect } from 'react';
-import { Box, Button, Container, Card, CardHeader, CardBody, CardFooter, Heading, Stack, StackDivider, Text, Image } from "@chakra-ui/react";
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link as ChakraLink,Box, Button,  Card, CardHeader, CardBody, CardFooter, Heading, Stack, StackDivider, Text, Image } from "@chakra-ui/react";
+import { Link as ReactRouterLink, useNavigate } from "react-router-dom";
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 const MidCenter = () => {
   const [products, setProducts] = useState([]);
@@ -40,7 +39,7 @@ const MidCenter = () => {
   return (
     <>
       <Box bg='white' marginTop='100px' width='100%'>
-        <Heading>WHY SHOP FROM WEBSITE & APP</Heading>
+        <Heading marginLeft='400px' >WHY SHOP FROM WEBSITE & APP</Heading>
         <br /><br />
        
         <br /><br /><br />
@@ -48,14 +47,14 @@ const MidCenter = () => {
 
       <Box bg='#E2D2DF'>
         <br /><br /><br />
-        <Heading size='1xl'>EXCLUSIVE RANGE LAUNCH</Heading>
+        <Heading fontSize='30px' marginLeft='400px' >EXCLUSIVE RANGE LAUNCH</Heading>
         <br /><br />
       </Box>
  
 
 
 <Box className="home-page" style={{ position: "relative", overflow: "hidden"  }}backgroundColor='black' p={4}  >
-        <Heading color='pink' >Best Seller</Heading>
+        <Heading color='pink' marginLeft='500px'marginBottom='30px' >Best Seller</Heading>
         {products.length === 0 ? (
           <p>Loading products...</p>
         ) : (
@@ -83,12 +82,18 @@ const MidCenter = () => {
                       </Box>
                     </Stack>
                   </CardBody>
-
-
                   <CardFooter>
+                    
+
+
+                  </CardFooter>
+                  <CardFooter>
+                  <ChakraLink as={ReactRouterLink}to="/wishlist" color="gray.900" mr={4}>
+                 <FontAwesomeIcon icon={faHeart} />
+                   </ChakraLink>
                     <Button variant="solid" colorScheme="blue" bg="black" onClick={() => handleSelectShade(product.id)}>
                       SELECT SHADE
-                    </Button>
+                  </Button>
                   </CardFooter>
                 </Card>
               ))}
